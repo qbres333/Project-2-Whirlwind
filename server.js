@@ -21,10 +21,20 @@ const hbs = exphbs.create({ helpers });
 app.use((req, res, next) => {
   res.set({
     "Content-Security-Policy":
-      "default-src 'self'; script-src 'self' project-2-whirlwind.onrender.com/ https://cdn.jsdelivr.net/npm/popper.js@1.14.3/dist/umd/popper.min.js https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/js/bootstrap.min.js https://code.jquery.com/jquery-3.3.1.slim.min.js; style-src 'self' https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/css/bootstrap.min.css project-2-whirlwind.onrender.com/; img-src 'self' project-2-whirlwind.onrender.com/ http://www.w3.org/2000/svg data:image/svg+xml;charset=utf8,%3Csvg;",
+      "default-src 'self'; script-src 'self' project-2-whirlwind.onrender.com/ https://cdn.jsdelivr.net/npm/popper.js@1.14.3/dist/umd/popper.min.js https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/js/bootstrap.min.js https://code.jquery.com/jquery-3.3.1.slim.min.js; style-src 'self' https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/css/bootstrap.min.css project-2-whirlwind.onrender.com/; img-src 'self' project-2-whirlwind.onrender.com/ http://www.w3.org/2000/svg data:;",
   });
   next();
 });
+//set headers for public files (MIME types)
+// app.get("/login.js", (req, res) => {
+//   res.setHeader("Content-Type", "text/javascript");
+//   res.sendFile(path.join(__dirname, "public", "js","login.js"));
+// });
+// app.get("/logout.js", (req, res) => {
+//   res.setHeader("Content-Type", "text/javascript");
+//   res.sendFile(path.join(__dirname, "public", "js", "logout.js"));
+// });
+
 
 
 // cookie
@@ -53,16 +63,6 @@ app.set("view engine", "handlebars");
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, "public")));
-
-//set headers for public files (MIME types)
-app.get("/login.js", (req, res) => {
-  res.setHeader("Content-Type", "text/javascript");
-  res.sendFile(path.join(__dirname, "public", "js","login.js"));
-});
-app.get("/logout.js", (req, res) => {
-  res.setHeader("Content-Type", "text/javascript");
-  res.sendFile(path.join(__dirname, "public", "js", "logout.js"));
-});
 
 
 // find path to route
