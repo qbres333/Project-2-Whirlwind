@@ -35,14 +35,15 @@ const sess = {
 
 app.use(session(sess));
 
+
 // Manually set Content Security Policy (CSP) headers
-app.use((req, res, next) => {
-  res.set({
-    "Content-Security-Policy":
-      "default-src 'self' https://cdn.jsdelivr.net; script-src 'self' https://cdn.jsdelivr.net; style-src 'self' https://cdn.jsdelivr.net; img-src 'self' https://cdn.jsdelivr.net;",
-  });
-  next();
-});
+// app.use((req, res, next) => {
+//   res.set({
+//     "Content-Security-Policy":
+//       "default-src 'self' https://cdn.jsdelivr.net; script-src 'self' https://cdn.jsdelivr.net; style-src 'self' https://cdn.jsdelivr.net; img-src 'self' https://cdn.jsdelivr.net;",
+//   });
+//   next();
+// });
 // app.use((req, res, next) => {
 //   res.set({
 //     "Content-Security-Policy":
@@ -58,6 +59,13 @@ app.set("view engine", "handlebars");
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, "public")));
+
+//set headers for public files
+app.get("/js/login.js", (req, res) => {
+  res.setHeader("Content-Type", "application/javascript");
+  res.sendFile(path.join(__dirname, "public", "login.js"));
+});
+
 
 // find path to route
 app.use(routes);
