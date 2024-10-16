@@ -17,6 +17,16 @@ const PORT = process.env.PORT || 3001;
 // require handlebars
 const hbs = exphbs.create({ helpers });
 
+// Manually set Content Security Policy (CSP)
+app.use((req, res, next) => {
+  res.set({
+    "Content-Security-Policy":
+      "default-src 'self'; script-src 'self' project-2-whirlwind.onrender.com/ https://cdn.jsdelivr.net/npm/popper.js@1.14.3/dist/umd/popper.min.js https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/js/bootstrap.min.js https://code.jquery.com/jquery-3.3.1.slim.min.js; style-src 'self' https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/css/bootstrap.min.css project-2-whirlwind.onrender.com/; img-src 'self' project-2-whirlwind.onrender.com/ http://www.w3.org/2000/svg data:image/svg+xml;charset=utf8,%3Csvg;",
+  });
+  next();
+});
+
+
 // cookie
 const sess = {
   secret: "Super secret secret ",
@@ -36,16 +46,6 @@ const sess = {
 app.use(session(sess));
 
 
-// Manually set Content Security Policy (CSP)
-app.use((req, res, next) => {
-  res.set({
-    "Content-Security-Policy":
-      "default-src 'self'; script-src 'self' https://project-2-whirlwind.onrender.com/ https://cdn.jsdelivr.net/npm/popper.js@1.14.3/dist/umd/popper.min.js https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/js/bootstrap.min.js https://code.jquery.com/jquery-3.3.1.slim.min.js; style-src 'self' https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/css/bootstrap.min.css https://project-2-whirlwind.onrender.com/; img-src 'self' https://project-2-whirlwind.onrender.com/ project-2-whirlwind.onrender.com/:1 http://www.w3.org/2000/svg data:image/svg+xml;charset=utf8,%3Csvg;",
-  });
-  next();
-});
-
-
 // to inform which templates from handle bars
 app.engine("handlebars", hbs.engine);
 app.set("view engine", "handlebars");
@@ -62,22 +62,6 @@ app.get("/login.js", (req, res) => {
 app.get("/logout.js", (req, res) => {
   res.setHeader("Content-Type", "text/javascript");
   res.sendFile(path.join(__dirname, "public", "js", "logout.js"));
-});
-app.get("/new-blog.js", (req, res) => {
-  res.setHeader("Content-Type", "text/javascript");
-  res.sendFile(path.join(__dirname, "public", "js", "new-blog.js"));
-});
-app.get("/signup.js", (req, res) => {
-  res.setHeader("Content-Type", "text/javascript");
-  res.sendFile(path.join(__dirname, "public", "js", "signup.js"));
-});
-app.get("/reset.css", (req, res) => {
-  res.setHeader("Content-Type", "text/css");
-  res.sendFile(path.join(__dirname, "public", "css", "reset.css"));
-});
-app.get("/style.css", (req, res) => {
-  res.setHeader("Content-Type", "text/css");
-  res.sendFile(path.join(__dirname, "public", "css", "style.css"));
 });
 
 
