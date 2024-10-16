@@ -40,7 +40,7 @@ app.use(session(sess));
 app.use((req, res, next) => {
   res.set({
     "Content-Security-Policy":
-      "default-src 'self'; script-src 'self' https://cdn.jsdelivr.net/npm/popper.js@1.14.3/dist/umd/popper.min.js https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/js/bootstrap.min.js https://code.jquery.com/jquery-3.3.1.slim.min.js; style-src 'self' https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/css/bootstrap.min.css; img-src 'self';",
+      "default-src 'self'; script-src 'self' https://project-2-whirlwind.onrender.com/ https://cdn.jsdelivr.net/npm/popper.js@1.14.3/dist/umd/popper.min.js https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/js/bootstrap.min.js https://code.jquery.com/jquery-3.3.1.slim.min.js; style-src 'self' https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/css/bootstrap.min.css https://project-2-whirlwind.onrender.com/; img-src 'self' https://project-2-whirlwind.onrender.com/;",
   });
   next();
 });
