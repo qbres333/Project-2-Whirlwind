@@ -44,13 +44,7 @@ app.use((req, res, next) => {
   });
   next();
 });
-// app.use((req, res, next) => {
-//   res.set({
-//     "Content-Security-Policy":
-//       "default-src 'self'; script-src 'self' cdnjs.cloudflare.com; style-src 'self' cdnjs.cloudflare.com; img-src 'self' data:;",
-//   });
-//   next();
-// });
+
 
 // to inform which templates from handle bars
 app.engine("handlebars", hbs.engine);
@@ -60,10 +54,30 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, "public")));
 
-//set headers for public files
+//set headers for public files (MIME types)
 app.get("/login.js", (req, res) => {
-  res.setHeader("Content-Type", "application/javascript");
+  res.setHeader("Content-Type", "text/javascript");
   res.sendFile(path.join(__dirname, "public", "js","login.js"));
+});
+app.get("/logout.js", (req, res) => {
+  res.setHeader("Content-Type", "text/javascript");
+  res.sendFile(path.join(__dirname, "public", "js", "logout.js"));
+});
+app.get("/new-blog.js", (req, res) => {
+  res.setHeader("Content-Type", "text/javascript");
+  res.sendFile(path.join(__dirname, "public", "js", "new-blog.js"));
+});
+app.get("/signup.js", (req, res) => {
+  res.setHeader("Content-Type", "text/javascript");
+  res.sendFile(path.join(__dirname, "public", "js", "signup.js"));
+});
+app.get("/reset.css", (req, res) => {
+  res.setHeader("Content-Type", "text/css");
+  res.sendFile(path.join(__dirname, "public", "css", "reset.css"));
+});
+app.get("/style.css", (req, res) => {
+  res.setHeader("Content-Type", "text/css");
+  res.sendFile(path.join(__dirname, "public", "css", "style.css"));
 });
 
 
