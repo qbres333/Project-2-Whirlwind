@@ -39,10 +39,17 @@ app.use(session(sess));
 app.use((req, res, next) => {
   res.set({
     "Content-Security-Policy":
-      "default-src 'self'; script-src 'self' cdnjs.cloudflare.com; style-src 'self' cdnjs.cloudflare.com; img-src 'self' data:;",
+      "default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self';",
   });
   next();
 });
+// app.use((req, res, next) => {
+//   res.set({
+//     "Content-Security-Policy":
+//       "default-src 'self'; script-src 'self' cdnjs.cloudflare.com; style-src 'self' cdnjs.cloudflare.com; img-src 'self' data:;",
+//   });
+//   next();
+// });
 
 // to inform which templates from handle bars
 app.engine("handlebars", hbs.engine);
