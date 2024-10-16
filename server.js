@@ -63,7 +63,7 @@ app.use(express.static(path.join(__dirname, "public")));
 //set headers for public files
 app.get("/js/login.js", (req, res) => {
   res.setHeader("Content-Type", "application/javascript");
-  res.sendFile(path.join(__dirname, "public", "/js/login.js"));
+  res.sendFile(path.join(__dirname, "public", "js","login.js"));
 });
 
 
