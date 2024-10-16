@@ -36,14 +36,14 @@ const sess = {
 app.use(session(sess));
 
 
-// Manually set Content Security Policy (CSP) headers
-// app.use((req, res, next) => {
-//   res.set({
-//     "Content-Security-Policy":
-//       "default-src 'self' https://cdn.jsdelivr.net; script-src 'self' https://cdn.jsdelivr.net; style-src 'self' https://cdn.jsdelivr.net; img-src 'self' https://cdn.jsdelivr.net;",
-//   });
-//   next();
-// });
+// Manually set Content Security Policy (CSP)
+app.use((req, res, next) => {
+  res.set({
+    "Content-Security-Policy":
+      "default-src 'self'; script-src 'self' https://cdn.jsdelivr.net/npm https://code.jquery.com; style-src 'self' https://cdn.jsdelivr.net; img-src 'self';",
+  });
+  next();
+});
 // app.use((req, res, next) => {
 //   res.set({
 //     "Content-Security-Policy":
