@@ -75,6 +75,9 @@ https://handlebarsjs.com/guide/
 Express Routing:
 https://expressjs.com/en/guide/routing.html
 
+Content Security Policy (CSP) for ExpressJS (to allow public files in Render):
+https://content-security-policy.com/examples/express-js/
+
 ## License
 
 MIT License - see the LICENSE file for details.
