@@ -26,7 +26,6 @@ As a travel enthusiast, there are many resources available to help plan trips. B
 -- CSS & Bootstrap CSS
 -- Javascript & Handlebars.js
 -- Bootstrap Carousel
--- Render for deployment
 
 ## Key Features
 
@@ -34,13 +33,10 @@ Whirlwind requires the user to login or sign up for access to travel blog conten
 
 ## Installation
 
-In order to use this app locally, the user must install Node.js and PostgreSQL. Alternatively, the app can be accessed through the Render deployment.
-
-Render deployment:
-https://whirl-wind.onrender.com/
+In order to use this app locally, the user must install Node.js and PostgreSQL. 
 
 GitHub repository:
-https://github.com/S-via/Whirl-wind
+https://github.com/qbres333/Project-2-Whirlwind
 
 ## Usage
 
@@ -50,7 +46,7 @@ To use the app locally, the user can do the following:
     -- type '\i schema.sql and press ENTER
     -- right click on 'server.js' file and open in the terminal
     -- run the following commands: npm i, npm run seed, node server.js
-    -- In your browser, go to 'localhost:3001'
+    -- In your browser, go to 'localhost:3001' and enjoy!
 
 ![login page](/img/homepage.png) 
 ![landing page after sign in](/img/blogs.png)
@@ -58,7 +54,6 @@ To use the app locally, the user can do the following:
 
 ## Contributors
 
-![Finola-McBurnie](https://github.com/qbres333)
 ![Yin-Wu](https://github.com/yinwu173)
 
 ## Credits
