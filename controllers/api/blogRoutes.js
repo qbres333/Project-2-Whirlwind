@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { Blog, User, Comment } = require('../../models');
+const { Blog, User } = require('../../models');
 // inside untils auth.js needs a path to activate this variable
 const withAuth = require('../../utils/auth');
 

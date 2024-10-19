@@ -32,7 +32,6 @@ router.post('/', async (req, res) => {
             });
         // if username does not exist, return error
         if (!userData) {
-            // console.error(response); //server response was null; fixed
             res.status(400).json({ message: 'Invalid entry' });
             return;
         }

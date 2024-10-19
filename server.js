@@ -25,16 +25,6 @@ app.use((req, res, next) => {
   });
   next();
 });
-//set headers for public files (MIME types)
-// app.get("/login.js", (req, res) => {
-//   res.setHeader("Content-Type", "text/javascript");
-//   res.sendFile(path.join(__dirname, "public", "js","login.js"));
-// });
-// app.get("/logout.js", (req, res) => {
-//   res.setHeader("Content-Type", "text/javascript");
-//   res.sendFile(path.join(__dirname, "public", "js", "logout.js"));
-// });
-
 
 
 // cookie
@@ -56,7 +46,6 @@ const sess = {
 app.use(session(sess));
 
 
-// to inform which templates from handle bars
 app.engine("handlebars", hbs.engine);
 app.set("view engine", "handlebars");
 
@@ -65,7 +54,6 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, "public")));
 
 
-// find path to route
 app.use(routes);
 
 sequelize.sync({ force: false }).then(() => {
